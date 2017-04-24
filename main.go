@@ -61,11 +61,11 @@ func run(input, output string) error {
 				return err
 			}
 
-			if _, err := fmt.Fprintf(w, "\t\t\t<failure type=\"Error\"/>\n"); err != nil {
+			if _, err := fmt.Fprint(w, "\t\t\t<failure type=\"Error\"/>\n"); err != nil {
 				return err
 			}
 		} else if test.Result == 2 {
-			if _, err := fmt.Fprintf(w, "\t\t\t<skipped/>\n"); err != nil {
+			if _, err := fmt.Fprint(w, "\t\t\t<skipped/>\n"); err != nil {
 				return err
 			}
 		}
@@ -83,7 +83,7 @@ func run(input, output string) error {
 			}
 		}
 
-		if _, err := fmt.Fprintf(w, "\t\t</testcase>\n"); err != nil {
+		if _, err := fmt.Fprint(w, "\t\t</testcase>\n"); err != nil {
 			return err
 		}
 	}
