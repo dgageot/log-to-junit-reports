@@ -57,12 +57,11 @@ func run(input, output string) error {
 		}
 
 		if test.Result == 1 {
-			testLog, err := readTestLog(filepath.Join(input, test.Name+".log"))
 			if err != nil {
 				return err
 			}
 
-			if _, err := fmt.Fprintf(w, "\t\t\t<failure type=\"Error\"/>\n", testLog); err != nil {
+			if _, err := fmt.Fprintf(w, "\t\t\t<failure type=\"Error\"/>\n"); err != nil {
 				return err
 			}
 		} else if test.Result == 2 {
