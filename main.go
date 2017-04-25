@@ -149,5 +149,9 @@ func readTestLog(path string) (string, error) {
 }
 
 func sanitizeOutput(output string) string {
-	return nonPrintable.ReplaceAllLiteralString(output, "")
+	printable := nonPrintable.ReplaceAllLiteralString(output, "")
+	noOpeningData := strings.Replace(printable, "<![CDATA[", "", -1)
+	noClosingData := strings.Replace(noOpeningData, "]]>", "", -1)
+
+	return noClosingData
 }
